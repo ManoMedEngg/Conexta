@@ -516,7 +516,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateCharts() {
         if (state.activeTab !== 'live-monitoring') return;
         
-     
+        const updateSingleChart = (chartId, data) => {
+            const chart = charts[chartId];
+            if (chart) {
                 chart.data.labels = data.map(d => d.time);
                 chart.data.datasets[0].data = data.map(d => d.value);
                 chart.update();
@@ -528,7 +530,14 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSingleChart('resp-chart', state.chartData.respiratory);
         
         // Update Blood Pressure chart (multi-dataset)
-       
+        const bpChart = charts['bp-chart'];
+        if (bpChart) {
+            bpChart.data.labels = state.chartData.bloodPressure.map(d => d.time);
+            bpChart.data.datasets[0].data = state.chartData.bloodPressure.map(d => d.systolic);
+            bpChart.data.datasets[1].data = state.chartData.bloodPressure.map(d => d.diastolic);
+            bpChart.update();
+        }
+
         updateCurrentValues();
     }
 
