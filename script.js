@@ -351,7 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
             content = `
                 <div class="border bg-card rounded-lg p-6">
                     <h3 class="text-2xl font-semibold mb-4">System Overview</h3>
-                    <img src="https://i.ibb.co/6ngp6sM/341cc1fcdf6e9c27b234649c5055666ff4a6ab0e.png" alt="System Diagram" class="rounded-lg shadow-sm max-w-full h-auto mx-auto"/>
+                    <img src="Gemini_Generated_Image_e7j7whe7j7whe7j7.png" alt="System Diagram" class="rounded-lg shadow-sm max-w-full h-auto mx-auto"/>
                     <div class="mt-4 bg-muted/50 p-4 rounded-lg">
                         <h4 class="text-lg mb-2">Welcome to the ${capitalize(state.user.userType)} Dashboard</h4>
                         <p class="text-sm text-muted-foreground">Monitor device status, patient vitals, and system analytics in real-time.</p>
@@ -759,3 +759,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // Run the application
     init();
 });
+
