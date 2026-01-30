@@ -1,8 +1,0 @@
-/* Dark theme helpers (optional override hook) */
-
-.theme-dark .cx-card,
-.theme-dark .cx-auth-panel,
-.theme-dark .cx-auth-hero {
-  color: #e5e7eb;
-}
-
