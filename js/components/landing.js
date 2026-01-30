@@ -119,7 +119,7 @@ function renderLanding(root) {
   const pptBtn = document.getElementById("hero-ppt-btn");
   if (pptBtn) {
     pptBtn.addEventListener("click", () => {
-      window.open("#/conexta-ppt-demo", "_blank");
+      navigate("/presentation");
     });
   }
 

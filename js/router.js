@@ -35,6 +35,10 @@ function handleRoute() {
     // Fallback for unknown dashboards
     matched = routes["/dashboard/doctor"];
   }
+  // Add the /presentation route mapping
+  if (path === "/presentation") {
+    matched = routes["/presentation"];
+  }
   if (!matched) {
     matched = routes["/"];
   }

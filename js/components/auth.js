@@ -73,12 +73,12 @@ function renderAuth(root) {
         <div id="auth-login-view">
           <div class="layout-col" style="gap:10px;">
             <div class="settings-field">
-              <label class="field-label" for="login-user-id">${t("user_id")}</label>
-              <input id="login-user-id" class="text-input" autocomplete="username" />
+              <label class="field-label" for="login-user-id">${t("name")}</label>
+              <input id="login-user-id" class="text-input" autocomplete="name" placeholder="Enter your name" />
             </div>
             <div class="settings-field">
               <label class="field-label" for="login-password">${t("password")}</label>
-              <input id="login-password" type="password" class="text-input" autocomplete="current-password" />
+              <input id="login-password" type="password" class="text-input" autocomplete="current-password" placeholder="Enter your password" />
             </div>
             <div class="settings-field">
               <label class="field-label" for="login-captcha">${t(
@@ -98,9 +98,6 @@ function renderAuth(root) {
             </div>
             <div class="layout-row" style="margin-top:10px; gap:10px; align-items:center;">
               <button id="login-submit" class="btn">${t("sign_in")}</button>
-              <button id="trial-login" class="btn btn-secondary" style="font-size:0.78rem;padding-inline:0.9rem;">
-                ${t("trial_login")}
-              </button>
             </div>
           </div>
         </div>
@@ -109,23 +106,15 @@ function renderAuth(root) {
           <div class="layout-col" style="gap:10px;">
             <div class="settings-field">
               <label class="field-label" for="signup-name">${t("name")}</label>
-              <input id="signup-name" class="text-input" />
-            </div>
-            <div class="settings-field">
-              <label class="field-label" for="signup-dob">${t("dob")}</label>
-              <input id="signup-dob" class="text-input" type="date" />
+              <input id="signup-name" class="text-input" placeholder="Enter your Name" />
             </div>
             <div class="settings-field">
               <label class="field-label" for="signup-email">${t("email")}</label>
-              <input id="signup-email" class="text-input" type="email" />
-            </div>
-            <div class="settings-field">
-              <label class="field-label" for="signup-phone">${t("phone")}</label>
-              <input id="signup-phone" class="text-input" type="tel" />
+              <input id="signup-email" class="text-input" type="email" placeholder="Enter your E-mail" />
             </div>
             <div class="settings-field">
               <label class="field-label" for="signup-password">${t("password")}</label>
-              <input id="signup-password" class="text-input" type="password" />
+              <input id="signup-password" class="text-input" type="password" placeholder="Enter your Password" />
             </div>
             <div class="settings-field">
               <label class="field-label" for="signup-role">Role</label>
@@ -173,24 +162,41 @@ function renderAuth(root) {
     });
   }
 
+  // Helper to get selected role from chips
+  const getSelectedRole = () => {
+    const activeChip = root.querySelector('[data-role-select].chip-active');
+    return activeChip ? activeChip.getAttribute('data-role-select') : 'doctor';
+  };
+
   const loginSubmit = document.getElementById("login-submit");
   if (loginSubmit) {
     loginSubmit.addEventListener("click", () => {
-      const userId = document.getElementById("login-user-id").value.trim();
-      const password = document.getElementById("login-password").value;
+      const name = document.getElementById("login-user-id").value.trim();
       const captchaVal = document.getElementById("login-captcha").value.trim();
+
+      if (!name) {
+        alert("Please enter a Name.");
+        return;
+      }
+
       if (String(captchaVal) !== String(currentCaptcha.answer)) {
         alert("Captcha mismatch. Please try again.");
         currentCaptcha = buildCaptcha();
         renderAuth(root);
         return;
       }
-      const session = authenticate(userId, password);
-      if (!session) {
-        alert("Invalid credentials in demo mode.");
-        return;
-      }
-      navigate(`/dashboard/${session.role || "doctor"}`);
+
+      // DUMMY LOGIN: Create session with Name and Selected Role
+      const role = getSelectedRole();
+      const session = {
+        id: name.toLowerCase().replace(/\s/g, ''),
+        name: name,
+        role: role,
+        isGuest: true
+      };
+
+      setAuthSession(session);
+      navigate(`/dashboard/${role}`);
       renderHeader();
     });
   }
@@ -199,17 +205,14 @@ function renderAuth(root) {
   if (signupSubmit) {
     signupSubmit.addEventListener("click", () => {
       const name = document.getElementById("signup-name").value.trim();
-      const dob = document.getElementById("signup-dob").value;
-      const email = document.getElementById("signup-email").value.trim();
-      const phone = document.getElementById("signup-phone").value.trim();
-      const password = document.getElementById("signup-password").value;
       const role = document.getElementById("signup-role").value;
       const captchaVal = document.getElementById("signup-captcha").value.trim();
 
-      if (!name || !email || !password) {
-        alert("Please fill name, email and password for demo signup.");
+      if (!name) {
+        alert("Please enter a Name.");
         return;
       }
+
       if (String(captchaVal) !== String(currentCaptcha.answer)) {
         alert("Captcha mismatch. Please try again.");
         currentCaptcha = buildCaptcha();
@@ -217,24 +220,17 @@ function renderAuth(root) {
         return;
       }
 
-      const userId = email.toLowerCase();
-      registerUser({
-        id: userId,
-        password,
-        role,
-        name,
-        dob,
-        email,
-        phone,
-      });
-      alert("Demo account created. You can now login using email and password.");
-    });
-  }
+      // DUMMY SIGNUP: Direct login
+      const session = {
+        id: name.toLowerCase().replace(/\s/g, ''),
+        name: name,
+        role: role,
+        isGuest: true
+      };
 
-  const trialLoginBtn = document.getElementById("trial-login");
-  if (trialLoginBtn) {
-    trialLoginBtn.addEventListener("click", () => {
-      openTrialLoginModal();
+      setAuthSession(session);
+      navigate(`/dashboard/${role}`);
+      renderHeader();
     });
   }
 
@@ -244,7 +240,7 @@ function renderAuth(root) {
     forgotUserBtn.addEventListener("click", () => {
       openInfoModal(
         t("forgot_user"),
-        "In this demo, trial accounts are pre-configured. Use the Trial login button to preview Conexta."
+        "Just enter any Name to login."
       );
     });
   }
@@ -252,7 +248,7 @@ function renderAuth(root) {
     forgotPassBtn.addEventListener("click", () => {
       openInfoModal(
         t("forgot_password"),
-        "Password reset flows are simulated. For now, simply use trial login or re-signup with a new email."
+        "Password is ignored in this demo. Just enter a Name."
       );
     });
   }
@@ -295,69 +291,6 @@ function openInfoModal(title, body) {
   };
   root.querySelector(".modal-backdrop").addEventListener("click", close);
   document.getElementById("modal-close").addEventListener("click", close);
-}
-
-function openTrialLoginModal() {
-  const root = document.getElementById("modal-root");
-  if (!root) return;
-  root.innerHTML = `
-    <div class="modal-backdrop"></div>
-    <div class="modal animate-slide-up">
-      <div class="modal-header">
-        <div class="modal-title">${t("trial_login")}</div>
-        <button id="trial-modal-close" class="icon-button">✕</button>
-      </div>
-      <div class="modal-body">
-        <p class="text-soft" style="font-size:0.8rem;">
-          Pick a role to auto-login with demo data. These sessions are local to your browser.
-        </p>
-        <div class="chip-row">
-          <button class="chip chip-active" data-role="doctor">${t(
-    "role_doctor"
-  )}</button>
-          <button class="chip" data-role="patient">${t("role_patient")}</button>
-          <button class="chip" data-role="engineer">${t(
-    "role_engineer"
-  )}</button>
-          <button class="chip" data-role="vendor">${t("role_vendor")}</button>
-        </div>
-        <div class="layout-row" style="margin-top:12px;justify-content:flex-end;">
-          <button id="trial-go" class="btn btn-secondary">${t("trial_login")}</button>
-        </div>
-      </div>
-    </div>
-  `;
-
-  let selectedRole = "doctor";
-  root.querySelectorAll(".chip[data-role]").forEach((chip) => {
-    chip.addEventListener("click", () => {
-      selectedRole = chip.getAttribute("data-role");
-      root.querySelectorAll(".chip[data-role]").forEach((c) =>
-        c.classList.toggle("chip-active", c === chip)
-      );
-    });
-  });
-
-  const close = () => {
-    root.innerHTML = "";
-  };
-  root.querySelector(".modal-backdrop").addEventListener("click", close);
-  document.getElementById("trial-modal-close").addEventListener("click", close);
-
-  document.getElementById("trial-go").addEventListener("click", () => {
-    const demoUsers = getDemoUsers();
-    const found =
-      demoUsers.find((u) => u.role === selectedRole) || demoUsers[0];
-    const session = {
-      id: found.id,
-      name: found.name,
-      role: found.role,
-    };
-    setAuthSession(session);
-    renderHeader();
-    navigate(`/dashboard/${session.role || "doctor"}`);
-    close();
-  });
 }
 
 window.addEventListener("conexta:languageChanged", () => {

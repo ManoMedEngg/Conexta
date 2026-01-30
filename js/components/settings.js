@@ -19,6 +19,8 @@ function renderSettingsPanel() {
     (session && session.name) ||
     t("header_guest");
 
+  const languages = getSupportedLanguages();
+
   panel.innerHTML = `
     <div class="layout-col" style="height:100%;">
       <div>
@@ -27,19 +29,25 @@ function renderSettingsPanel() {
       </div>
 
       <div class="settings-field">
-        <label class="field-label" for="settings-display-name">${
-          t("settings_name_label") || "Display name"
-        }</label>
+        <label class="field-label" for="settings-display-name">${t("settings_name_label") || "Display name"
+    }</label>
         <input id="settings-display-name" class="text-input" value="${displayName}" />
       </div>
 
       <div class="settings-field">
-        <label class="field-label" for="settings-hue">${
-          t("settings_theme_label") || "Accent hue"
-        }</label>
-        <input id="settings-hue" class="range-input" type="range" min="180" max="320" value="${
-          (settings && settings.hue) || 200
-        }" />
+         <label class="field-label">${t("settings_language") || "Language"}</label>
+         <select id="settings-language" class="select-input">
+           ${languages.map(lang =>
+      `<option value="${lang.code}" ${lang.code === currentLanguage ? "selected" : ""}>${lang.label}</option>`
+    ).join('')}
+         </select>
+      </div>
+
+      <div class="settings-field">
+        <label class="field-label" for="settings-hue">${t("settings_theme_label") || "Accent hue"
+    }</label>
+        <input id="settings-hue" class="range-input" type="range" min="180" max="320" value="${(settings && settings.hue) || 200
+    }" />
       </div>
 
       <div class="layout-row" style="margin-top:auto;justify-content:space-between;">
@@ -53,6 +61,13 @@ function renderSettingsPanel() {
   const hueInput = document.getElementById("settings-hue");
   const closeBtn = document.getElementById("settings-close");
   const logoutBtn = document.getElementById("settings-logout");
+  const langSelect = document.getElementById("settings-language");
+
+  if (langSelect) {
+    langSelect.addEventListener("change", (e) => {
+      setLanguage(e.target.value);
+    });
+  }
 
   if (hueInput) {
     const applyHue = (value) => {

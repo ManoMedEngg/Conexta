@@ -25,6 +25,7 @@ window.addEventListener("load", () => {
   registerRoute("/", (container) => renderLanding(container));
   registerRoute("/login", (container) => renderAuth(container));
   registerRoute("/signup", (container) => renderAuth(container));
+  registerRoute("/presentation", (container) => renderPresentation(container));
 
   registerRoute("/dashboard/doctor", (container) =>
     protectRoute("/dashboard/doctor", container, (c) =>

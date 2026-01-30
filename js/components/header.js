@@ -1,6 +1,15 @@
 function renderHeader() {
   const headerEl = document.getElementById("app-header");
   if (!headerEl) return;
+
+  // Logic: Only show header on Landing Page ("/")
+  const currentPath = getCurrentPath();
+  if (currentPath !== "/") {
+    headerEl.style.display = "none";
+    return;
+  }
+  headerEl.style.display = "block"; // Ensure it shows on landing
+
   const session = getAuthSession();
   const settings = getSettings();
   const displayName =
@@ -10,8 +19,6 @@ function renderHeader() {
   const roleLabel = session
     ? `${t("header_user_label")}: ${session.role || "doctor"}`
     : "";
-
-  const languages = getSupportedLanguages();
 
   headerEl.innerHTML = `
     <div class="header-inner">
@@ -29,18 +36,9 @@ function renderHeader() {
       ? `<span class="text-soft" style="font-size:0.7rem;">${roleLabel}</span>`
       : ""
     }
-        <select id="language-select" class="select-input language-select">
-          ${languages
-      .map(
-        (lang) =>
-          `<option value="${lang.code}" ${lang.code === currentLanguage ? "selected" : ""
-          }>${lang.label}</option>`
-      )
-      .join("")}
-        </select>
         <button id="settings-toggle" class="icon-button" title="${t(
-        "settings"
-      )}">
+      "settings"
+    )}">
           ⚙
         </button>
         <button id="try-conexta-btn" class="btn btn-secondary">
@@ -49,13 +47,6 @@ function renderHeader() {
       </div>
     </div>
   `;
-
-  const langSelect = document.getElementById("language-select");
-  if (langSelect) {
-    langSelect.addEventListener("change", (e) => {
-      setLanguage(e.target.value);
-    });
-  }
 
   const brandLabel = headerEl.querySelector(".brand");
   if (brandLabel) {
