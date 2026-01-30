@@ -9,10 +9,10 @@ function renderFooter() {
                     <span style="font-size:0.9rem;">
                       <a href="mailto:210823121045@kingsedu.ac.in" style="color:var(--text-soft); text-decoration:none; margin-right:8px;">conexta@info</a>
                       <span style="color:var(--border-subtle);">|</span>
-                      <a href="tel:+917358878062" style="color:var(--text-soft); text-decoration:none; margin-left:8px;">+91 73588 78062</a>
+                      <a href="https://github.com/shankarishanmugam0510-maker" style="color:var(--text-soft); text-decoration:none; margin-left:8px;">GitHub</a>
                     </span>
                 </div>
-            <p style="font-size:0.8rem; margin-bottom:6px;"> Developed by <strong style="color:var(--text-main);">Manoj</strong>, a Biomedical Engineering Student</p>
+            <p style="font-size:0.8rem; margin-bottom:6px;"> Developed by <strong style="color:var(--text-main);">Shankari</strong>, a Biomedical Engineering Student</p>
             <div class="copyright" style="font-size:0.7rem; color:var(--text-soft);">© 2025 Conexta, Kings Engineering College. All rights reserved.</div>
         </div>
     </footer>

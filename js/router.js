@@ -45,6 +45,19 @@ function handleRoute() {
   if (typeof matched === "function") {
     matched(container);
   }
+  updateChromeVisibility(path);
+}
+
+function updateChromeVisibility(path) {
+  const header = document.getElementById("app-header");
+  const footer = document.getElementById("app-footer");
+
+  // Show header/footer ONLY on landing page ("/")
+  const isLanding = path === "/";
+  const displayVal = isLanding ? "block" : "none";
+
+  if (header) header.style.display = displayVal;
+  if (footer) footer.style.display = displayVal;
 }
 
 window.addEventListener("hashchange", handleRoute);

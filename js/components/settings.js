@@ -111,6 +111,36 @@ function renderSettingsPanel() {
   }
 }
 
-window.addEventListener("load", renderSettingsPanel);
+
+function renderFloatingSettingsButton() {
+  const existing = document.getElementById("floating-settings-btn");
+  if (existing) return;
+
+  const btn = document.createElement("button");
+  btn.id = "floating-settings-btn";
+  btn.className = "icon-button";
+  btn.innerHTML = "⚙";
+  btn.title = t("settings") || "Settings";
+
+  // Style it to be fixed top-right
+  Object.assign(btn.style, {
+    position: "fixed",
+    top: "20px",
+    right: "20px",
+    zIndex: "1000",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.5)"
+  });
+
+  document.body.appendChild(btn);
+
+  btn.addEventListener("click", () => {
+    toggleSettingsPanel();
+  });
+}
+
+window.addEventListener("load", () => {
+  renderSettingsPanel();
+  renderFloatingSettingsButton();
+});
 window.addEventListener("conexta:languageChanged", renderSettingsPanel);
 

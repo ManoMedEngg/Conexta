@@ -25,6 +25,11 @@ function renderAuth(root) {
 
   root.innerHTML = `
     <div class="layout-col animate-slide-up">
+      <div style="margin-bottom:-10px;">
+        <button id="auth-back-btn" class="btn-ghost" style="padding-left:0; color:var(--text-soft); font-size:0.85rem;">
+          ← ${t("back") || "Back"}
+        </button>
+      </div>
       <section class="glass-card" style="padding:18px 18px 16px;">
         <div class="layout-row" style="gap:18px; align-items:flex-start;">
           <div class="layout-grow">
@@ -159,6 +164,13 @@ function renderAuth(root) {
       signupView.style.display = "block";
       signupTab.classList.add("chip-active");
       loginTab.classList.remove("chip-active");
+    });
+  }
+
+  const backBtn = document.getElementById("auth-back-btn");
+  if (backBtn) {
+    backBtn.addEventListener("click", () => {
+      navigate("/");
     });
   }
 

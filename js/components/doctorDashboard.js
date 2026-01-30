@@ -11,7 +11,17 @@ function renderDoctorDashboard(root) {
   document.title = `${t("doctor_dashboard_title")} · Conexta`;
 
   // Main Container
-  root.innerHTML = `<div id="doctor-dash-container" class="layout-col animate-slide-up" style="gap:20px;"></div>`;
+  root.innerHTML = `
+    <div style="margin-bottom:10px;">
+      <button id="dash-home-btn" class="btn btn-ghost" style="padding-left:0; color:var(--text-soft); font-size:0.9rem;">
+        ← ${t("back_to_home") || "Home"}
+      </button>
+    </div>
+    <div id="doctor-dash-container" class="layout-col animate-slide-up" style="gap:20px;"></div>
+  `;
+
+  root.querySelector("#dash-home-btn").addEventListener("click", () => navigate("/"));
+
   const container = document.getElementById("doctor-dash-container");
 
   renderContent(container);

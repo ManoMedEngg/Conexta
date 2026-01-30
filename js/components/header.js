@@ -36,11 +36,6 @@ function renderHeader() {
       ? `<span class="text-soft" style="font-size:0.7rem;">${roleLabel}</span>`
       : ""
     }
-        <button id="settings-toggle" class="icon-button" title="${t(
-      "settings"
-    )}">
-          ⚙
-        </button>
         <button id="try-conexta-btn" class="btn btn-secondary">
           ${t("try_conexta")}
         </button>
@@ -52,13 +47,6 @@ function renderHeader() {
   if (brandLabel) {
     brandLabel.style.cursor = "pointer";
     brandLabel.addEventListener("click", () => navigate("/"));
-  }
-
-  const settingsToggle = document.getElementById("settings-toggle");
-  if (settingsToggle) {
-    settingsToggle.addEventListener("click", () => {
-      toggleSettingsPanel();
-    });
   }
 
   const tryBtn = document.getElementById("try-conexta-btn");

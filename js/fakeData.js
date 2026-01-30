@@ -6,18 +6,17 @@ const CONEXTA_PATIENTS_KEY = "conexta_patients";
 const CONEXTA_DEVICES_KEY = "conexta_devices";
 const CONEXTA_SETTINGS_KEY = "conexta_settings";
 
-const tamilNames = [
-  "Dr. Suganya",
-  "Dr. Ashok",
-  "Mohan",
-  "Meena",
-  "Karthik",
-  "Lakshmi",
-  "Sundar",
-  "Revathi",
-  "Vignesh",
-  "Anitha",
-];
+const tamilNames = "Anbu, Iniyan, Kavin, Thamarai, Yazhini, Elango, Madhi, Nila, Selvam, Arul, Karuna, Oviya, Bharathi, Valluvan, Thiran, Pugazh, Amudhan, Malar, Thenral, Arivu, Cheliyan, Kayalvizhi, Maran, Vetri, Sudar, Mukil, Ponni, Agilan, Inban, Senthamil, Malathi, Kanmani, Ezhil, Iniyavan, Thangam, Kathir, Mugilan, Valli, Devan, Amaran, Jeeva, Nithila, Kavya, Paari, Adhiban, Ilakkiya, Sibi, Velan, Kumaran, Murugan, Shakti, Thalaivan, Nedumaran, Kundhavi, Semmalar, Azhagu, Mani, Rathinam, Muthamizh, Kani, Tamizhan, Karkee, Veera, Dhivya, Baalan, Cholan, Pandiyan, Cheran, Koovalan, Kannagi, Madhavi, Manimekalai, Angavai, Sangavai, Athiyaman, Avvai, Kambar, Bharati, Vanathy, Kundavai, Arulmozhi, Vandhiyathevan, Ponniyin, Aadhavan, Oviyan, Magizhan, Nakulan, Sahadev, Arjunan, Bheeman, Dharmar, Abhimanyu, Iniya, Isai, Inbam, Thavam, Amudhu, Paavai, Poovizhi, Vennila, Sembiya, Thirumavalavan, Karikalan, Rajarajan, Kulothungan, Vikraman, Paraman, Sivan, Vishnu, Brahma, Lakshmi, Saraswathi, Durga, Meenakshi, Kamakshi, Visalakshi, Annamalai, Palani, Thirumal, Perumal, Govindan, Madhavan, Keshavan, Narayanan, Raghu, Ramu, Seetha, Lakshmanan, Bharathan, Shatrughan, Hanuman, Sugreevan, Angathan, Vali, Ravanan, Vibeeshanan, Kumbakarnan, Indrajit, Mandodari, Kaikeyi, Kousalya, Sumithra, Dasarathan, Janakan, Vishwamithran, Vashishtar, Agasthiyar, Thiruvalluvar, Avvaiyar, Kaniyan, Pungundranar, Kapilar, Paranar, Nakkeerar, Ilango, Seethalai, Sathanar, Thiruthakka, Devar, Konguvelir, Kambar, Ottakoothar, Pugazhenthi, Jayamkondar, Sekkizhar, Arunagirinathar, Pattinathar, Thayumanavar, Ramalingar, Bharathiyar, Bharathidasan, Kannadasan, Vairamuthu, Vaali, Metha, Abdul, Rahman, Kamaraj, Anna, Periyar, Rajaji, Sathyamurthi, Viswanathan, Anand, Ramanujam, Raman, Chandrasekhar, Abdul, Kalam, Vivek, Santhanam, Vadivelu, Goundamani, Senthil, Rajinikanth, Kamal, Haasan, Ajith, Vijay, Vikram, Suriya, Dhanush, Silambarasan, Jayam, Ravi, Karthi, Sivakarthikeyan, Vijay, Sethupathi, Nayanthara, Trisha, Anushka, Samantha, Keerthy, Suresh, Jyothika, Simran, Sneha, Laila, Asin, Kajal, Agarwal, Tamannaah, Hansika, Rakul, Preet, Shruti, Haasan, Akshara, Haasan, Aishwarya, Rai, Priyanka, Chopra, Deepika, Padukone, Katrina, Kaif, Alia, Bhatt, Kareena, Kapoor, Karisma, Kapoor, Sridevi, Madhuri, Dixit, Juhi, Chawla, Rani, Mukerji, Kajol, Preity, Zinta, Vidya, Balan, Kangana, Ranaut, Taapsee, Pannu, Bhumi, Pednekar, Radhika, Apte, Richa, Chadha, Swara, Bhaskar, Huma, Qureshi, Nimrat, Kaur, Aditi, Rao, Hydari, Diana, Penty, Vaani, Kapoor, Kriti, Sanon, Kiara, Advani, Disha, Patani, Sara, Ali, Khan, Janhvi, Kapoor, Ananya, Panday, Tara, Sutaria, Shanaya, Kapoor, Khushi, Kapoor, Suhana, Khan, Aryan, Khan, Abram, Khan, Taimur, Ali, Khan, Jeh, Ali, Khan, Aaradhya, Bachchan, Azad, Rao, Khan, Viaan, Raj, Kundra, Samisha, Shetty, Kundra, Nitara, Kumar, Aarav, Kumar, Misha, Kapoor, Zain, Kapoor, Inaaya, Naumi, Kemmu".split(",").map(n => n.trim()).filter(n => n);
+
+let namePool = [...tamilNames];
+
+function getNextName() {
+  if (namePool.length === 0) {
+    namePool = [...tamilNames];
+  }
+  const idx = Math.floor(Math.random() * namePool.length);
+  return namePool.splice(idx, 1)[0];
+}
 
 function loadJson(key, fallback) {
   try {
@@ -461,13 +460,12 @@ const HOSPITAL_STRUCTURE = [
 ];
 
 function generateEquipmentUsageData(equipmentName) {
-  const names = ["Rajesh", "Priya", "Amit", "Sneha", "Vikram", "Anjali", "Suresh", "Divya", "Kamal", "Rani", "Arun", "Deepa"];
   const conditions = ["Routine Checkup", "Critical Observation", "Post-op Recovery", "Diagnostic Scan", "Therapy Session"];
 
   const generateList = (count, status) => {
     return Array.from({ length: count }, (_, i) => ({
       id: `P-${Math.floor(Math.random() * 9000) + 1000}`,
-      name: names[Math.floor(Math.random() * names.length)],
+      name: getNextName(),
       age: Math.floor(Math.random() * 60) + 10,
       condition: conditions[Math.floor(Math.random() * conditions.length)],
       time: `${Math.floor(Math.random() * 12) + 1}:${Math.floor(Math.random() * 60).toString().padStart(2, '0')} ${Math.random() > 0.5 ? 'AM' : 'PM'}`,
