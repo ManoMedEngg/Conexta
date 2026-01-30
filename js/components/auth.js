@@ -61,7 +61,7 @@ function renderAuth(root) {
               <span class="metric-value">12</span>
             </div>
             <div class="mini-graph" style="margin-top:6px;">
-              <div class="mini-graph-line"></div>
+              <canvas id="auth-ecg-canvas" width="180" height="40" style="display:block; width:100%; height:40px;"></canvas>
             </div>
           </div>
         </div>
@@ -281,6 +281,59 @@ function renderAuth(root) {
       }
     });
   });
+
+  // Start Auth ECG
+  startAuthECG();
+}
+
+function startAuthECG() {
+  const canvas = document.getElementById("auth-ecg-canvas");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  canvas.width = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
+
+  const width = canvas.width;
+  const height = canvas.height;
+
+  let phase = 0;
+  const dataPoints = [];
+  for (let i = 0; i < width; i++) dataPoints.push(height / 2);
+
+  function draw() {
+    if (!document.getElementById("auth-ecg-canvas")) return;
+
+    phase += 0.15;
+    let y = height / 2;
+    const cycle = phase % 25;
+
+    if (cycle > 2 && cycle < 4) y -= (height * 0.1) * Math.sin((cycle - 2) * Math.PI);
+    else if (cycle > 5 && cycle < 5.5) y += (height * 0.1);
+    else if (cycle >= 5.5 && cycle < 6.5) y -= (height * 0.45) * Math.sin((cycle - 5.5) * Math.PI);
+    else if (cycle >= 6.5 && cycle < 7) y += (height * 0.15);
+    else if (cycle > 10 && cycle < 13) y -= (height * 0.15) * Math.sin((cycle - 10) * Math.PI / 2);
+
+    y += (Math.random() - 0.5) * 2;
+
+    dataPoints.push(y);
+    if (dataPoints.length > width) dataPoints.shift();
+
+    ctx.clearRect(0, 0, width, height);
+    ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--success') || "#0f0";
+    ctx.lineWidth = 1.5;
+    ctx.lineJoin = "round";
+    ctx.beginPath();
+
+    for (let i = 0; i < dataPoints.length; i++) {
+      const px = i;
+      const py = dataPoints[i];
+      if (i === 0) ctx.moveTo(px, py);
+      else ctx.lineTo(px, py);
+    }
+    ctx.stroke();
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
 }
 
 function openInfoModal(title, body) {

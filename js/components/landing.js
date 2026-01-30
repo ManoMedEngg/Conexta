@@ -19,33 +19,41 @@ function renderLanding(root) {
           <div class="diagram">
             <div class="diagram-node diagram-node-legacy fade-in-on-scroll">
               <div class="diagram-node-title">${t("landing_about_legacy")}</div>
-              <div class="diagram-node-sub">CT • ECG • X-ray • Infusion</div>
+              <div class="diagram-node-sub">${t("landing_legacy_sub")}</div>
             </div>
-            <div class="diagram-node diagram-node-converter fade-in-on-scroll">
+            <div class="diagram-node diagram-node-converter fade-in-on-scroll" style="position:relative;">
               <div class="diagram-node-title">${t(
       "landing_about_converter"
     )}</div>
-              <div class="diagram-node-sub">Analog → IoT packets</div>
+              <div class="diagram-node-sub">${t("landing_converter_sub")}</div>
+              <!-- Miniature ECG Canvas -->
+              <canvas id="landing-ecg-canvas" width="120" height="40" style="
+                display: block;
+                margin: 4px auto 0;
+                background: rgba(0,20,0,0.5);
+                border: 1px solid var(--success);
+                border-radius: 4px;
+              "></canvas>
             </div>
             <div class="diagram-node diagram-node-cloud fade-in-on-scroll">
               <div class="diagram-node-title">${t("landing_about_cloud")}</div>
-              <div class="diagram-node-sub">FHIR-ish streams • Alerts • Reports</div>
+              <div class="diagram-node-sub">${t("landing_cloud_sub")}</div>
             </div>
             <div class="diagram-node diagram-node-role diagram-node-doctor fade-in-on-scroll">
               <div class="diagram-node-title">${t("role_doctor")}</div>
-              <div class="diagram-node-sub">${t("landing_about_doctor")}</div>
+              <div class="diagram-node-sub">${t("landing_doctor_sub")}</div>
             </div>
             <div class="diagram-node diagram-node-role diagram-node-patient fade-in-on-scroll">
               <div class="diagram-node-title">${t("role_patient")}</div>
-              <div class="diagram-node-sub">${t("landing_about_patient")}</div>
+              <div class="diagram-node-sub">${t("landing_patient_sub")}</div>
             </div>
             <div class="diagram-node diagram-node-role diagram-node-engineer fade-in-on-scroll">
               <div class="diagram-node-title">${t("role_engineer")}</div>
-              <div class="diagram-node-sub">${t("landing_about_engineer")}</div>
+              <div class="diagram-node-sub">${t("landing_engineer_sub")}</div>
             </div>
             <div class="diagram-node diagram-node-role diagram-node-vendor fade-in-on-scroll">
               <div class="diagram-node-title">${t("role_vendor")}</div>
-              <div class="diagram-node-sub">${t("landing_about_vendor")}</div>
+              <div class="diagram-node-sub">${t("landing_vendor_sub")}</div>
             </div>
             <div class="diagram-connection">
               <svg viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -72,14 +80,10 @@ function renderLanding(root) {
         <div class="two-column">
           <div class="glass-card" style="padding:14px 16px;">
             <p class="text-soft" style="font-size:0.85rem; margin-top:0;">
-              Conexta wraps legacy CT, ECG, X-ray and pumps with a tiny IoT probe at the signal
-              output. That probe samples, encrypts and beams your patient's physiology into a
-              shared cloud canvas.
+              ${t("landing_how_it_works_p1")}
             </p>
             <p class="text-soft" style="font-size:0.85rem;">
-              Doctors see real-time vitals and alarms, patients see their journey and prescriptions,
-              biomedical engineers see fleet uptime and AMC, and vendors see service load —
-              all stitched into the same hologram.
+              ${t("landing_how_it_works_p2")}
             </p>
           </div>
           <div class="glass-card" style="padding:14px 16px;">
@@ -95,15 +99,9 @@ function renderLanding(root) {
               </div>
             </div>
             <div class="chip-row">
-              <button class="chip chip-active landing-role-chip">${t(
-      "role_doctor"
-    )}</button>
-              <button class="chip landing-role-chip">${t(
-      "role_patient"
-    )}</button>
-              <button class="chip landing-role-chip">${t(
-      "role_engineer"
-    )}</button>
+              <button class="chip chip-active landing-role-chip">${t("role_doctor")}</button>
+              <button class="chip landing-role-chip">${t("role_patient")}</button>
+              <button class="chip landing-role-chip">${t("role_engineer")}</button>
               <button class="chip landing-role-chip">${t("role_vendor")}</button>
             </div>
           </div>
@@ -139,6 +137,56 @@ function renderLanding(root) {
   );
 
   root.querySelectorAll(".fade-in-on-scroll").forEach((el) => observer.observe(el));
+
+  // Start ECG
+  startLandingECG();
+}
+
+function startLandingECG() {
+  const canvas = document.getElementById("landing-ecg-canvas");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  const width = canvas.width;
+  const height = canvas.height;
+
+  let phase = 0;
+  const dataPoints = [];
+  for (let i = 0; i < width / 2; i++) dataPoints.push(height / 2);
+
+  function draw() {
+    if (!document.getElementById("landing-ecg-canvas")) return;
+
+    phase += 0.2;
+    let y = height / 2;
+    const cycle = phase % 25;
+
+    if (cycle > 2 && cycle < 4) y -= (height * 0.1) * Math.sin((cycle - 2) * Math.PI);
+    else if (cycle > 5 && cycle < 5.5) y += (height * 0.1);
+    else if (cycle >= 5.5 && cycle < 6.5) y -= (height * 0.45) * Math.sin((cycle - 5.5) * Math.PI);
+    else if (cycle >= 6.5 && cycle < 7) y += (height * 0.15);
+    else if (cycle > 10 && cycle < 13) y -= (height * 0.15) * Math.sin((cycle - 10) * Math.PI / 2);
+
+    y += (Math.random() - 0.5) * 2;
+
+    dataPoints.push(y);
+    if (dataPoints.length > width / 2) dataPoints.shift();
+
+    ctx.clearRect(0, 0, width, height);
+    ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--success') || "#0f0";
+    ctx.lineWidth = 1.5;
+    ctx.lineJoin = "round";
+    ctx.beginPath();
+
+    for (let i = 0; i < dataPoints.length; i++) {
+      const px = i * 2;
+      const py = dataPoints[i];
+      if (i === 0) ctx.moveTo(px, py);
+      else ctx.lineTo(px, py);
+    }
+    ctx.stroke();
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
 }
 
 window.addEventListener("conexta:languageChanged", () => {
