@@ -1,0 +1,89 @@
+{
+  "app": {
+    "title": "कनेक्स्टा",
+    "tagline": "लीगेसी से IoT देखभाल तक"
+  },
+  "auth": {
+    "login": "लॉगिन",
+    "signup": "साइन अप",
+    "email": "ईमेल",
+    "password": "पासवर्ड",
+    "name": "नाम",
+    "role": "भूमिका",
+    "tryDemo": "डेमो मोड आज़माएं",
+    "tryAsDoctor": "डॉक्टर के रूप में",
+    "tryAsPatient": "मरीज के रूप में",
+    "tryAsEngineer": "इंजीनियर के रूप में",
+    "tryAsVendor": "विक्रेता के रूप में",
+    "logout": "लॉगआउट"
+  },
+  "roles": {
+    "doctor": "डॉक्टर",
+    "patient": "मरीज",
+    "engineer": "बायोमेडिकल इंजीनियर",
+    "vendor": "विक्रेता"
+  },
+  "dashboard": {
+    "welcome": "स्वागत",
+    "overview": "अवलोकन"
+  },
+  "doctor": {
+    "patients": "मरीज",
+    "appointments": "नियुक्तियाँ",
+    "alerts": "महत्वपूर्ण अलर्ट",
+    "reports": "रिपोर्ट",
+    "vitals": "संकेत",
+    "heartRate": "हृदय गति",
+    "bloodPressure": "रक्तचाप",
+    "spo2": "ऑक्सीजन",
+    "temperature": "तापमान",
+    "viewDetails": "विवरण देखें"
+  },
+  "patient": {
+    "healthStatus": "स्वास्थ्य स्थिति",
+    "prescriptions": "नुस्खे",
+    "healthTips": "स्वास्थ्य सुझाव",
+    "medicationSchedule": "दवा कार्यक्रम",
+    "latestVitals": "नवीनतम संकेत"
+  },
+  "engineer": {
+    "devices": "उपकरण",
+    "deviceList": "उपकरण सूची",
+    "deviceStats": "उपकरण आंकड़े",
+    "online": "ऑनलाइन",
+    "offline": "ऑफलाइन",
+    "maintenance": "रखरखाव",
+    "warning": "चेतावनी",
+    "amcAlerts": "AMC अलर्ट",
+    "calibrationAlerts": "अंशांकन अलर्ट",
+    "testingAlerts": "परीक्षण अलर्ट",
+    "location": "स्थान",
+    "lastCommunication": "अंतिम संचार"
+  },
+  "vendor": {
+    "machines": "AMC के तहत मशीनें",
+    "amcContract": "AMC अनुबंध",
+    "serviceAlerts": "सेवा अलर्ट",
+    "expiryDate": "समाप्ति तिथि"
+  },
+  "common": {
+    "save": "सहेजें",
+    "cancel": "रद्द करें",
+    "delete": "हटाएं",
+    "edit": "संपादित करें",
+    "update": "अपडेट करें",
+    "add": "जोड़ें",
+    "close": "बंद करें",
+    "search": "खोजें",
+    "filter": "फ़िल्टर",
+    "status": "स्थिति",
+    "date": "तारीख",
+    "time": "समय",
+    "type": "प्रकार",
+    "name": "नाम",
+    "age": "आयु",
+    "gender": "लिंग",
+    "severity": "गंभीरता",
+    "message": "संदेश"
+  }
+}

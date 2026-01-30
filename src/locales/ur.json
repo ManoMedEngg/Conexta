@@ -1,0 +1,11 @@
+{
+  "app": {"title": "کونیکسٹا", "tagline": "لیگیسی سے IoT کیئر تک"},
+  "auth": {"login": "لاگ ان", "signup": "سائن اپ", "email": "ای میل", "password": "پاس ورڈ", "name": "نام", "role": "کردار", "tryDemo": "ڈیمو موڈ آزمائیں", "tryAsDoctor": "ڈاکٹر کے طور پر", "tryAsPatient": "مریض کے طور پر", "tryAsEngineer": "انجینئر کے طور پر", "tryAsVendor": "بیچنے والے کے طور پر", "logout": "لاگ آؤٹ"},
+  "roles": {"doctor": "ڈاکٹر", "patient": "مریض", "engineer": "بائیو میڈیکل انجینئر", "vendor": "بیچنے والا"},
+  "dashboard": {"welcome": "خوش آمدید", "overview": "جائزہ"},
+  "doctor": {"patients": "مریض", "appointments": "ملاقاتیں", "alerts": "اہم انتباہات", "reports": "رپورٹیں", "vitals": "وائٹلز", "heartRate": "دل کی دھڑکن", "bloodPressure": "بلڈ پریشر", "spo2": "آکسیجن", "temperature": "درجہ حرارت", "viewDetails": "تفصیلات دیکھیں"},
+  "patient": {"healthStatus": "صحت کی حالت", "prescriptions": "نسخے", "healthTips": "صحت کے نکات", "medicationSchedule": "دوائیں کا شیڈول", "latestVitals": "تازہ ترین وائٹلز"},
+  "engineer": {"devices": "آلات", "deviceList": "آلات کی فہرست", "deviceStats": "آلات کے اعداد و شمار", "online": "آن لائن", "offline": "آف لائن", "maintenance": "مرمت", "warning": "انتباہ", "amcAlerts": "AMC انتباہات", "calibrationAlerts": "کیلیبریشن انتباہات", "testingAlerts": "ٹیسٹنگ انتباہات", "location": "مقام", "lastCommunication": "آخری رابطہ"},
+  "vendor": {"machines": "AMC کے تحت مشینیں", "amcContract": "AMC معاہدہ", "serviceAlerts": "سروس انتباہات", "expiryDate": "اختتام کی تاریخ"},
+  "common": {"save": "محفوظ کریں", "cancel": "منسوخ کریں", "delete": "حذف کریں", "edit": "ترمیم کریں", "update": "اپ ڈیٹ کریں", "add": "شامل کریں", "close": "بند کریں", "search": "تلاش کریں", "filter": "فلٹر", "status": "حالت", "date": "تاریخ", "time": "وقت", "type": "قسم", "name": "نام", "age": "عمر", "gender": "جنس", "severity": "شدت", "message": "پیغام"}
+}

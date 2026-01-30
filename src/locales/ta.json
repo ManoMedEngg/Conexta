@@ -1,0 +1,89 @@
+{
+  "app": {
+    "title": "கனெக்ஸ்டா",
+    "tagline": "பழைய தொழில்நுட்பத்திலிருந்து IoT பராமரிப்புக்கு"
+  },
+  "auth": {
+    "login": "உள்நுழைய",
+    "signup": "பதிவு செய்ய",
+    "email": "மின்னஞ்சல்",
+    "password": "கடவுச்சொல்",
+    "name": "பெயர்",
+    "role": "பங்கு",
+    "tryDemo": "டெமோ முறையை முயற்சிக்கவும்",
+    "tryAsDoctor": "மருத்துவராக முயற்சிக்கவும்",
+    "tryAsPatient": "நோயாளியாக முயற்சிக்கவும்",
+    "tryAsEngineer": "பொறியாளராக முயற்சிக்கவும்",
+    "tryAsVendor": "விற்பனையாளராக முயற்சிக்கவும்",
+    "logout": "வெளியேறு"
+  },
+  "roles": {
+    "doctor": "மருத்துவர்",
+    "patient": "நோயாளி",
+    "engineer": "உயிர்மருத்துவ பொறியாளர்",
+    "vendor": "விற்பனையாளர்"
+  },
+  "dashboard": {
+    "welcome": "வரவேற்கிறோம்",
+    "overview": "மேலோட்டம்"
+  },
+  "doctor": {
+    "patients": "நோயாளிகள்",
+    "appointments": "சந்திப்புகள்",
+    "alerts": "முக்கிய எச்சரிக்கைகள்",
+    "reports": "அறிக்கைகள்",
+    "vitals": "உயிர்நிலைகள்",
+    "heartRate": "இதய துடிப்பு",
+    "bloodPressure": "இரத்த அழுத்தம்",
+    "spo2": "ஆக்ஸிஜன் அளவு",
+    "temperature": "வெப்பநிலை",
+    "viewDetails": "விவரங்களைக் காண்க"
+  },
+  "patient": {
+    "healthStatus": "ஆரோக்கிய நிலை",
+    "prescriptions": "மருந்துச் சீட்டுகள்",
+    "healthTips": "ஆரோக்கிய குறிப்புகள்",
+    "medicationSchedule": "மருந்து அட்டவணை",
+    "latestVitals": "சமீபத்திய உயிர்நிலைகள்"
+  },
+  "engineer": {
+    "devices": "சாதனங்கள்",
+    "deviceList": "சாதன பட்டியல்",
+    "deviceStats": "சாதன புள்ளிவிவரங்கள்",
+    "online": "இணைப்பில்",
+    "offline": "துண்டிக்கப்பட்டது",
+    "maintenance": "பராமரிப்பு",
+    "warning": "எச்சரிக்கை",
+    "amcAlerts": "AMC எச்சரிக்கைகள்",
+    "calibrationAlerts": "அளவுத்திருத்த எச்சரிக்கைகள்",
+    "testingAlerts": "சோதனை எச்சரிக்கைகள்",
+    "location": "இடம்",
+    "lastCommunication": "கடைசி தொடர்பு"
+  },
+  "vendor": {
+    "machines": "AMC கீழ் உள்ள இயந்திரங்கள்",
+    "amcContract": "AMC ஒப்பந்தம்",
+    "serviceAlerts": "சேவை எச்சரிக்கைகள்",
+    "expiryDate": "காலாவதி தேதி"
+  },
+  "common": {
+    "save": "சேமி",
+    "cancel": "ரத்து செய்",
+    "delete": "நீக்கு",
+    "edit": "திருத்து",
+    "update": "புதுப்பி",
+    "add": "சேர்",
+    "close": "மூடு",
+    "search": "தேடு",
+    "filter": "வடிகட்டி",
+    "status": "நிலை",
+    "date": "தேதி",
+    "time": "நேரம்",
+    "type": "வகை",
+    "name": "பெயர்",
+    "age": "வயது",
+    "gender": "பாலினம்",
+    "severity": "தீவிரம்",
+    "message": "செய்தி"
+  }
+}

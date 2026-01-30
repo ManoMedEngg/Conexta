@@ -1,0 +1,89 @@
+{
+  "app": {
+    "title": "Conexta",
+    "tagline": "From Legacy to IoT Care"
+  },
+  "auth": {
+    "login": "Login",
+    "signup": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "name": "Name",
+    "role": "Role",
+    "tryDemo": "Try Demo Mode",
+    "tryAsDoctor": "Try as Doctor",
+    "tryAsPatient": "Try as Patient",
+    "tryAsEngineer": "Try as Engineer",
+    "tryAsVendor": "Try as Vendor",
+    "logout": "Logout"
+  },
+  "roles": {
+    "doctor": "Doctor",
+    "patient": "Patient",
+    "engineer": "Biomedical Engineer",
+    "vendor": "Vendor"
+  },
+  "dashboard": {
+    "welcome": "Welcome",
+    "overview": "Overview"
+  },
+  "doctor": {
+    "patients": "Patients",
+    "appointments": "Appointments",
+    "alerts": "Critical Alerts",
+    "reports": "Reports",
+    "vitals": "Vitals",
+    "heartRate": "Heart Rate",
+    "bloodPressure": "Blood Pressure",
+    "spo2": "SpO2",
+    "temperature": "Temperature",
+    "viewDetails": "View Details"
+  },
+  "patient": {
+    "healthStatus": "Health Status",
+    "prescriptions": "Prescriptions",
+    "healthTips": "Health Tips",
+    "medicationSchedule": "Medication Schedule",
+    "latestVitals": "Latest Vitals"
+  },
+  "engineer": {
+    "devices": "Devices",
+    "deviceList": "Device List",
+    "deviceStats": "Device Statistics",
+    "online": "Online",
+    "offline": "Offline",
+    "maintenance": "Maintenance",
+    "warning": "Warning",
+    "amcAlerts": "AMC Alerts",
+    "calibrationAlerts": "Calibration Alerts",
+    "testingAlerts": "Testing Alerts",
+    "location": "Location",
+    "lastCommunication": "Last Communication"
+  },
+  "vendor": {
+    "machines": "Machines Under AMC",
+    "amcContract": "AMC Contract",
+    "serviceAlerts": "Service Alerts",
+    "expiryDate": "Expiry Date"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "update": "Update",
+    "add": "Add",
+    "close": "Close",
+    "search": "Search",
+    "filter": "Filter",
+    "status": "Status",
+    "date": "Date",
+    "time": "Time",
+    "type": "Type",
+    "name": "Name",
+    "age": "Age",
+    "gender": "Gender",
+    "severity": "Severity",
+    "message": "Message"
+  }
+}

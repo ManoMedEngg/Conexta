@@ -1,0 +1,66 @@
+.cx-pulse-alert {
+  animation: cx-pulse-alert 1.4s ease-in-out infinite;
+}
+
+@keyframes cx-pulse-alert {
+  0% {
+    box-shadow:
+      0 0 0 0 rgba(248, 113, 113, 0.8),
+      0 0 30px rgba(248, 113, 113, 0.6);
+  }
+  70% {
+    box-shadow:
+      0 0 0 8px rgba(248, 113, 113, 0),
+      0 0 45px rgba(248, 113, 113, 0.4);
+  }
+  100% {
+    box-shadow:
+      0 0 0 0 rgba(248, 113, 113, 0),
+      0 0 30px rgba(248, 113, 113, 0.6);
+  }
+}
+
+.cx-card-hover {
+  transition:
+    transform 0.18s ease-out,
+    box-shadow 0.18s ease-out;
+}
+
+.cx-card-hover:hover {
+  transform: translateY(-2px) perspective(800px) rotateX(2deg);
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.95),
+    0 0 0 1px rgba(30, 64, 175, 0.6);
+}
+
+.cx-wiggle {
+  animation: cx-wiggle 0.22s ease-in-out 0s 4;
+}
+
+@keyframes cx-wiggle {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-2px);
+  }
+  75% {
+    transform: translateX(2px);
+  }
+}
+
+.cx-soft-float {
+  animation: cx-soft-float 8s ease-in-out infinite;
+}
+
+@keyframes cx-soft-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+

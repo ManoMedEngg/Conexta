@@ -1,0 +1,11 @@
+{
+  "app": {"title": "ಕನೆಕ್ಸ್ಟಾ", "tagline": "ಲೆಗಸಿಯಿಂದ IoT ಕೇರ್ ಗೆ"},
+  "auth": {"login": "ಲಾಗಿನ್", "signup": "ಸೈನ್ ಅಪ್", "email": "ಇಮೇಲ್", "password": "ಪಾಸ್‌ವರ್ಡ್", "name": "ಹೆಸರು", "role": "ಪಾತ್ರ", "tryDemo": "ಡೆಮೋ ಮೋಡ್ ಪ್ರಯತ್ನಿಸಿ", "tryAsDoctor": "ವೈದ್ಯರಾಗಿ", "tryAsPatient": "ರೋಗಿಯಾಗಿ", "tryAsEngineer": "ಇಂಜಿನಿಯರ್ ಆಗಿ", "tryAsVendor": "ಮಾರಾಟಗಾರನಾಗಿ", "logout": "ಲಾಗ್‌ಔಟ್"},
+  "roles": {"doctor": "ವೈದ್ಯರು", "patient": "ರೋಗಿ", "engineer": "ಬಯೋಮೆಡಿಕಲ್ ಇಂಜಿನಿಯರ್", "vendor": "ಮಾರಾಟಗಾರ"},
+  "dashboard": {"welcome": "ಸ್ವಾಗತ", "overview": "ಅವಲೋಕನ"},
+  "doctor": {"patients": "ರೋಗಿಗಳು", "appointments": "ಅಪಾಯಿಂಟ್‌ಮೆಂಟ್‌ಗಳು", "alerts": "ನಿರ್ಣಾಯಕ ಎಚ್ಚರಿಕೆಗಳು", "reports": "ವರದಿಗಳು", "vitals": "ವೈಟಲ್ಸ್", "heartRate": "ಹೃದಯ ಬಡಿತ", "bloodPressure": "ರಕ್ತದೊತ್ತಡ", "spo2": "ಆಮ್ಲಜನಕ", "temperature": "ತಾಪಮಾನ", "viewDetails": "ವಿವರಗಳನ್ನು ವೀಕ್ಷಿಸಿ"},
+  "patient": {"healthStatus": "ಆರೋಗ್ಯ ಸ್ಥಿತಿ", "prescriptions": "ಪ್ರಿಸ್ಕ್ರಿಪ್ಷನ್‌ಗಳು", "healthTips": "ಆರೋಗ್ಯ ಸಲಹೆಗಳು", "medicationSchedule": "ಔಷಧಿ ವೇಳಾಪಟ್ಟಿ", "latestVitals": "ಇತ್ತೀಚಿನ ವೈಟಲ್ಸ್"},
+  "engineer": {"devices": "ಸಾಧನಗಳು", "deviceList": "ಸಾಧನ ಪಟ್ಟಿ", "deviceStats": "ಸಾಧನ ಅಂಕಿಅಂಶಗಳು", "online": "ಆನ್‌ಲೈನ್", "offline": "ಆಫ್‌ಲೈನ್", "maintenance": "ನಿರ್ವಹಣೆ", "warning": "ಎಚ್ಚರಿಕೆ", "amcAlerts": "AMC ಎಚ್ಚರಿಕೆಗಳು", "calibrationAlerts": "ಕ್ಯಾಲಿಬ್ರೇಶನ್ ಎಚ್ಚರಿಕೆಗಳು", "testingAlerts": "ಪರೀಕ್ಷೆ ಎಚ್ಚರಿಕೆಗಳು", "location": "ಸ್ಥಳ", "lastCommunication": "ಕೊನೆಯ ಸಂವಹನ"},
+  "vendor": {"machines": "AMC ಅಡಿಯಲ್ಲಿ ಯಂತ್ರಗಳು", "amcContract": "AMC ಒಪ್ಪಂದ", "serviceAlerts": "ಸೇವಾ ಎಚ್ಚರಿಕೆಗಳು", "expiryDate": "ಅವಧಿ ಮೀರಿದ ದಿನಾಂಕ"},
+  "common": {"save": "ಉಳಿಸಿ", "cancel": "ರದ್ದುಮಾಡಿ", "delete": "ಅಳಿಸಿ", "edit": "ಸಂಪಾದಿಸಿ", "update": "ನವೀಕರಿಸಿ", "add": "ಸೇರಿಸಿ", "close": "ಮುಚ್ಚಿ", "search": "ಹುಡುಕಿ", "filter": "ಫಿಲ್ಟರ್", "status": "ಸ್ಥಿತಿ", "date": "ದಿನಾಂಕ", "time": "ಸಮಯ", "type": "ಪ್ರಕಾರ", "name": "ಹೆಸರು", "age": "ವಯಸ್ಸು", "gender": "ಲಿಂಗ", "severity": "ತೀವ್ರತೆ", "message": "ಸಂದೇಶ"}
+}
