@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00f2ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0078ff;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Icon: Hexagon stylized as nodes -->
+  <g transform="translate(50, 60)" filter="url(#glow)">
+    <path d="M-30,0 L-15,-26 L15,-26 L30,0 L15,26 L-15,26 Z" fill="none" stroke="url(#grad1)" stroke-width="4" />
+    <circle cx="0" cy="0" r="8" fill="url(#grad1)" />
+    <circle cx="-30" cy="0" r="4" fill="#fff" />
+    <circle cx="30" cy="0" r="4" fill="#fff" />
+    <circle cx="-15" cy="-26" r="4" fill="#fff" />
+    <circle cx="15" cy="-26" r="4" fill="#fff" />
+    <circle cx="-15" cy="26" r="4" fill="#fff" />
+    <circle cx="15" cy="26" r="4" fill="#fff" />
+    
+    <!-- Connection lines -->
+    <line x1="0" y1="0" x2="30" y2="0" stroke="url(#grad1)" stroke-width="2" />
+    <line x1="0" y1="0" x2="-30" y2="0" stroke="url(#grad1)" stroke-width="2" />
+    <line x1="0" y1="0" x2="15" y2="-26" stroke="url(#grad1)" stroke-width="2" />
+    <line x1="0" y1="0" x2="-15" y2="26" stroke="url(#grad1)" stroke-width="2" />
+  </g>
+  
+  <!-- Text: Conexta -->
+  <text x="100" y="75" font-family="'Orbitron', sans-serif" font-size="48" font-weight="bold" fill="#fff" letter-spacing="2">
+    CONEXTA
+  </text>
+  
+  <!-- Tagline -->
+  <text x="104" y="95" font-family="sans-serif" font-size="12" fill="#00f2ff" letter-spacing="1.5">
+    MEDICAL IOT CLOUD
+  </text>
+</svg>

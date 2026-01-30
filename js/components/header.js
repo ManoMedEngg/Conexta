@@ -16,11 +16,9 @@ function renderHeader() {
   headerEl.innerHTML = `
     <div class="header-inner">
       <div class="brand">
-        <div class="brand-orbit animate-float-soft"></div>
-        <div class="brand-text">
-          <div class="brand-title">Conexta</div>
-          <div class="brand-subtitle">${t("landing_kicker")}</div>
-        </div>
+      <div class="brand">
+        <img src="assets/logo.svg" alt="Conexta" style="height:32px; filter: drop-shadow(0 0 5px rgba(0,242,255,0.4));" />
+      </div>
       </div>
       <div class="header-right">
         <div class="user-chip">
